@@ -1,15 +1,17 @@
 #include "piles.h"
 
-Piles::Piles()
+Piles::Piles(int w, int h)
 {
-   for (int i = 0; i < 1440; i++) {
-        pilePixel[i] = 860;
+   maxWidth = w;
+   pileBottom = h;
+   for (int i = 0; i < maxWidth; i++) {
+        pilePixel[i] = pileBottom;
     }
 
 }
 
 bool Piles::hitPile(int x, int y) {
-    if (x > 1440)
+    if (x > maxWidth)
         return false;
     if (pilePixel[x] == y)
         return true;
@@ -19,6 +21,11 @@ bool Piles::hitPile(int x, int y) {
 void Piles::pileUp(int x) {
     pilePixel[x] = pilePixel[x] - 1;
 }
+
+//void Piles::update(int h, int w) {
+//    maxWidth = w;
+//    pileBottom = h;
+//}
 
 
 

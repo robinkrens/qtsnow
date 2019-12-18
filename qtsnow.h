@@ -9,6 +9,7 @@
 #include <QTimer>
 #include <QDebug>
 #include <QColor>
+#include <QTextItem>
 
 #include "snow.h"
 

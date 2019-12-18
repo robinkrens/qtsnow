@@ -3,7 +3,8 @@
 
 qtsnow::qtsnow(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::qtsnow)
+    ui(new Ui::qtsnow),
+    piles(0,0)
 {
     /* Setup graphics */
     ui->setupUi(this);
@@ -64,20 +65,10 @@ void qtsnow::restoreGusts() {
 
 void qtsnow::animate() {
 
-    Snow s(&piles);
+    Snow s(&piles, windowWidth);
     snowFlakes->push_back(s);
 
     for (std::vector<Snow>::iterator it = snowFlakes->begin(); it!=snowFlakes->end(); ++it) {
-//        if (gusts > gustDuration) {
-//            gusts = 0;
-//            it->restoreSwirl();
-//        }
-//        else if (gusts > gustInterval)
-//            it->windGust(10);
-//        else {
-//            it->restoreSwirl();
-//        }
-
         it->update();
     }
 
@@ -97,7 +88,9 @@ void qtsnow::paint(QPainter *painter, QPaintEvent *event) {
     }
 
     painter->setFont(textFont);
-    painter->drawText(QPoint(windowWidth / 2,windowHeight / 2), "Merry XMAS");
+    QString wish = "Merry X-Mas!";
+    QPoint wishPos(windowWidth / 2 - 250, windowHeight / 2);
+    painter->drawText(wishPos, wish);
 
 
 }
@@ -117,5 +110,8 @@ void qtsnow::updateSizeConfig(int h, int w) {
 
     windowHeight = h;
     windowWidth = w;
+    piles = Piles(windowWidth, windowHeight);
+
+    qDebug() << "Height: " << windowHeight << "Width: " << windowWidth;
 
 }

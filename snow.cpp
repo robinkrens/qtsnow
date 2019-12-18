@@ -1,10 +1,11 @@
 #include "snow.h"
 #include <QDebug>
 
-#define maxWidth 1440
+//#define maxWidth 1440
 
-Snow::Snow(Piles * p)
+Snow::Snow(Piles * p, int screenWidth)
 {
+    maxWidth = screenWidth;
     int startPos = rand() % maxWidth;
     r.setRect(startPos,0,2,3);
 
@@ -30,10 +31,10 @@ void Snow::update() {
         return;
     }
 
-    if (r.x() > 1440)
+    if (r.x() > maxWidth)
         r.moveLeft(0);
     else if(r.x() < 0)
-        r.moveLeft(1440);
+        r.moveLeft(maxWidth);
 
     int displacement = swirl.speed * 1;
 
