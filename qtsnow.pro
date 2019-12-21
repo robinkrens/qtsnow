@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,13 +28,15 @@ SOURCES += \
         qtsnow.cpp \
     snow.cpp \
     snowswirl.cpp \
-    piles.cpp
+    piles.cpp \
+    tree.cpp
 
 HEADERS += \
         qtsnow.h \
     snow.h \
     snowswirl.h \
-    piles.h
+    piles.h \
+    tree.h
 
 FORMS += \
         qtsnow.ui

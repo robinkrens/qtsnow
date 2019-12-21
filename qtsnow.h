@@ -10,9 +10,13 @@
 #include <QDebug>
 #include <QColor>
 #include <QTextItem>
+#include <QPicture>
+#include <QSound>
 
 #include "snow.h"
+#include "tree.h"
 
+#define INTROTIME 100
 
 namespace Ui {
 class qtsnow;
@@ -41,10 +45,17 @@ private:
     std::vector<Snow> * snowFlakes;
     Piles piles;
     bool blowingWind;
+    std::vector<Tree> * trees;
 
     /* Window settings */
     int windowHeight;
     int windowWidth;
+
+    /* Background  music */
+    QSound bells;
+
+    /* Time for intro text */
+    int introTextTime;
     \
 protected:
     void paintEvent(QPaintEvent*);
